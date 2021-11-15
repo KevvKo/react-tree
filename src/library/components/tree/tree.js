@@ -1,7 +1,9 @@
 import React from 'react';
 
-export default Tree = () => {
+const Tree = () => {
     return(
         <div className='tree'></div>
     )
 }
+
+export default Tree;

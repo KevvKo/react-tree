@@ -1,7 +1,9 @@
 import React from 'react';
 
-export default function Leaf(){
+const Leaf = () => {
     return(
         <div className='leaf'></div>
     )
 }
+
+export default Leaf;
