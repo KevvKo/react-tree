@@ -19,10 +19,6 @@
     ],
     "rules": {
         "no-unused-vars": "warn",
-        "linebreak-style": [
-            "warn",
-            "unix"
-        ],
         "quotes": [
             "warn",
             "single"

@@ -1,8 +1,10 @@
 import React from 'react';
+import nodeModifier from '../../services/nodeModifier';
 
 const Tree = () => {
+
     return(
-        <div className='tree'></div>
+        <ul className='tree'></ul>
     );
 };
 

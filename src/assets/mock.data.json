@@ -1,0 +1,26 @@
+[
+    {
+        "name": "computer",
+        "hasChildren": true,
+        "children": ["surface", "macbook", "notebook"],
+        "context": {}
+    },
+    {
+        "name": "notebook",
+        "hasChildren": false,
+        "children": [],
+        "context": {}
+    },
+    {
+        "name": "macbook",
+        "hasChildren": false,
+        "children": [],
+        "context": {}
+    },
+    {
+        "name": "surface",
+        "hasChildren": false,
+        "children": [],
+        "context": {}
+    }
+  ]
