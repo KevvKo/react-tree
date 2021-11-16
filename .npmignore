@@ -16,6 +16,6 @@ CVS
 .DS_Store
 npm-debug.log
 .npmrc
-
+.eslintrc.json
 config.gypi
 package-lock.json

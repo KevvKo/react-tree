@@ -5,7 +5,7 @@ import styles from "rollup-plugin-styles";
 const autoprefixer = require('autoprefixer');
 
 // the entry point for the library
-const input = 'src/index.js'
+const input = 'src/library/index.js'
 
 // 
 var MODE = [
@@ -20,9 +20,6 @@ var MODE = [
   }
 ]
 
-
-
-
 var config = []
 
 
@@ -30,8 +27,7 @@ MODE.map((m) => {
     var conf = {
         input: input,
         output: {
-            // then name of your package
-            name: "react-awesome-buttons",
+            name: "react-tree",
             file: `dist/index.${m.fomart}.js`,
             format: m.fomart,
             exports: "auto"
