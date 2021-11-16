@@ -18,10 +18,7 @@
         "react"
     ],
     "rules": {
-        "indent": [
-            "warn",
-            "space"
-        ],
+        "no-unused-vars": "warn",
         "linebreak-style": [
             "warn",
             "unix"
