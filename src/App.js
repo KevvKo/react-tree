@@ -5,7 +5,6 @@ import { Tree } from './library';
 
 function App() {
 
-  console.log(data)
   return (
     <div className="App">
       <Tree data={ data }/>  

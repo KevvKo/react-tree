@@ -1,11 +1,34 @@
 import React from 'react';
+import Leaf from '../leaf/leaf';
 import nodeModifier from '../../services/nodeModifier';
+import PropTypes from 'prop-types';
 
-const Tree = () => {
+/**
+ * @todo use summary for collapsible elements!
+ * @param {*} props 
+ * @returns 
+ */
+
+const Tree = (props) => {
+
+    let tree; 
 
     return(
-        <ul className='tree'></ul>
+        <ul id='tree'>
+
+                <Leaf />
+                <ul>
+                    <Leaf />
+                    <Leaf />
+                    <Leaf />
+                    <Leaf />
+                </ul>
+        </ul>
     );
 };
+
+Tree.propTypes = {
+    data: PropTypes.array
+}
 
 export default Tree;
