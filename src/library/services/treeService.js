@@ -1,10 +1,11 @@
-const nodeModifier = () => {
+
+const treeModifier = () => {
 
 
     mapToTree: () => {
-        let tree = {}
+        let tree = {};
         return tree;
-    }
+    };
 
     /**
      * @params (Object) data
@@ -13,11 +14,17 @@ const nodeModifier = () => {
     mapToTreeNode: ( dataObject ) => {
         let treeNode = {};
         return treeNode;
-    }
+    };
 
     traverse: () => {
         
-    }
-}
+    };
+};
 
-export default nodeModifier;
+const branchModifier = () => {
+
+};
+
+const leafModifier = () => {
+
+};

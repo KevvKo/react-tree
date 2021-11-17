@@ -3,7 +3,7 @@ import React from 'react';
 const Leaf = (props) => {
 
     let leafNode = {
-        name: "computer",
+        name: 'computer',
         hasChildren: false,
         hasParent: true,
         parent: [],
@@ -13,7 +13,7 @@ const Leaf = (props) => {
 
     return(
         <li className='leaf'>{ leafNode.name }</li>
-    )
-}
+    );
+};
 
 export default Leaf;

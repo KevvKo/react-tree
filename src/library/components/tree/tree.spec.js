@@ -4,6 +4,6 @@ import Tree from './tree';
 
 describe('Tree Component', () => {
   it('should render properly', () => {
-    render(<Tree />)
-  })
+    render(<Tree />);
+  });
 });

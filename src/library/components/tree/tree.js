@@ -1,6 +1,5 @@
 import React from 'react';
 import Leaf from '../leaf/leaf';
-import nodeModifier from '../../services/nodeModifier';
 import PropTypes from 'prop-types';
 
 /**
@@ -29,6 +28,6 @@ const Tree = (props) => {
 
 Tree.propTypes = {
     data: PropTypes.array
-}
+};
 
 export default Tree;
