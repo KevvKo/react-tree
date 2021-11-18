@@ -1,7 +1,9 @@
 import React from 'react';
-import Leaf from '../leaf/leaf';
 import PropTypes from 'prop-types';
-
+// Components
+import Leaf from '../leaf/leaf';
+// Services
+import { treeService } from '../../services/treeService';
 /**
  * @todo use summary for collapsible elements!
  * @param {*} props 
@@ -10,7 +12,8 @@ import PropTypes from 'prop-types';
 
 const Tree = (props) => {
 
-    let tree; 
+    const service = treeService;
+    let tree = service.mapToTree( props.data);
 
     return(
         <ul id='tree'>
