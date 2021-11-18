@@ -1,19 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Leaf = (props) => {
 
-    let leafNode = {
-        name: 'computer',
-        hasChildren: false,
-        hasParent: true,
-        parent: [],
-        context: {}
-    };
-    let parent; 
-
+    let treeNode = props.node; 
     return(
-        <li className='leaf'>{ leafNode.name }</li>
+        <li className='leaf'>{treeNode.name }</li>
     );
+};
+
+Leaf.propTypes = {
+    node: PropTypes.object
 };
 
 export default Leaf;

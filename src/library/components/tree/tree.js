@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Leaf from '../leaf/leaf';
 // Services
 import { treeService } from '../../services/treeService';
+
 /**
  * @todo use summary for collapsible elements!
  * @param {*} props 
@@ -13,18 +14,20 @@ import { treeService } from '../../services/treeService';
 const Tree = (props) => {
 
     const service = treeService;
-    let tree = service.mapToTree( props.data);
+    let tree;
+    let leafs;
+
+    tree = service.mapToTree( props.data);
+    leafs = tree
+        .filter( treeNode => treeNode.hasParent === false)
+        .map( (treeNode, index ) => {
+            return <Leaf key={index} node={treeNode} />;
+        });  
+
 
     return(
         <ul id='tree'>
-
-                <Leaf />
-                <ul>
-                    <Leaf />
-                    <Leaf />
-                    <Leaf />
-                    <Leaf />
-                </ul>
+            { leafs}
         </ul>
     );
 };
