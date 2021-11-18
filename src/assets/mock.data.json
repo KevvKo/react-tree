@@ -9,11 +9,14 @@
         "name": "notebook",
         "hasChildren": false,
         "children": [],
-        "context": {}
+        "context": {},
+        "parent": "computer"
+
     },
     {
         "name": "macbook",
         "hasChildren": false,
+        "parent": "computer",
         "children": [],
         "context": {}
     },
@@ -21,6 +24,7 @@
         "name": "surface",
         "hasChildren": false,
         "children": [],
+        "parent": "computer",
         "context": {}
     }
   ]

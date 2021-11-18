@@ -28,6 +28,10 @@
             "warn",
             "always"
         ],
-        "no-unused-labels": "warn"
+        "no-unused-labels": "warn",
+        "max-len": [
+            "warn", 
+            { "code": 80 }
+        ]
     }
 }
