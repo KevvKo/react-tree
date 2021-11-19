@@ -30,14 +30,21 @@
     {
         "name": "Home",
         "hasChildren": false,
-        "children": [],
+        "children": ["Furniture"],
         "context": {}
     },
     {
         "name": "Macbook Air",
-        "hasChildren": false,
+        "hasChildren": true,
         "children": [],
         "parent": "macbook",
+        "context": {}
+    },
+    {
+        "name": "Furniture",
+        "hasChildren": false,
+        "children": [],
+        "parent": "Home",
         "context": {}
     }
   ]

@@ -1,34 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './branch.css';
 // Components 
 import Leaf from '../leaf/leaf';
 
 const Branch = (props) => {
     const nodes = props.nodes;
-    const leafs = nodes.map( node => {
+    const checkboxes = props.checkboxes;
+    const branches = nodes.map( node => {
         if(node.hasChildren){ 
             return (
-                <li>
+                <li className='branch'>
+                    {checkboxes &&
+                        <input type='checkbox'/>
+                     }
                     {node.name}
                     <ul>
-                        <Branch nodes={node.childrenNodes} />
+                        <Branch 
+                            nodes={node.childrenNodes} 
+                            checkboxes={checkboxes}
+                        />
                     </ul>
                 </li>
             );
         }
         else {
-            return <Leaf node={node} />; 
+            return <Leaf node={node} checkboxes={checkboxes} />; 
         }
     });
     return (
         <>
-            {leafs}
+            {branches}
         </>
     );
 };
 
 Branch.propTypes = {
-    nodes: PropTypes.array
+    nodes: PropTypes.array,
+    checkboxes: PropTypes.bool
 };
 
 export default Branch;

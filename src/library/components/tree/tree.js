@@ -18,6 +18,7 @@ const Tree = (props) => {
     const ServiceContext = createContext(service);
     let tree;
     let leafs;
+    const checkboxes = props.checkboxes;
 
     tree = service.mapToTree( props.data);
     leafs = tree
@@ -27,14 +28,20 @@ const Tree = (props) => {
     return(
         <ServiceContext.Provider>
             <ul id='tree'>
-                <Branch nodes={leafs}/>
+                <Branch nodes={leafs} checkboxes={ checkboxes }/>
             </ul>
         </ServiceContext.Provider>
     );
 };
 
 Tree.propTypes = {
-    data: PropTypes.array
+    data: PropTypes.array,
+    checkboxes: PropTypes.bool
 };
+
+Tree.defaultProps = {
+    checkboxes: true
+}
+
 
 export default Tree;
