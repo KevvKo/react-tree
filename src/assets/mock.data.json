@@ -26,5 +26,11 @@
         "children": [],
         "parent": "computer",
         "context": {}
+    },
+    {
+        "name": "Home",
+        "hasChildren": false,
+        "children": [],
+        "context": {}
     }
   ]

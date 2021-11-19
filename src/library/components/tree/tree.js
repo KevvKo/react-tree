@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
 // Components
 import Leaf from '../leaf/leaf';
+import Branch from '../branch/branch';
 // Services
 import { treeService } from '../../services/treeService';
 
@@ -14,6 +15,7 @@ import { treeService } from '../../services/treeService';
 const Tree = (props) => {
 
     const service = treeService;
+    const ServiceContext = createContext(service);
     let tree;
     let leafs;
 
@@ -26,9 +28,12 @@ const Tree = (props) => {
 
 
     return(
-        <ul id='tree'>
-            { leafs}
-        </ul>
+        <ServiceContext.Provider>
+            <ul id='tree'>
+                <Branch />
+                {leafs}
+            </ul>
+        </ServiceContext.Provider>
     );
 };
 
