@@ -15,9 +15,9 @@
     },
     {
         "name": "macbook",
-        "hasChildren": false,
+        "hasChildren": true,
         "parent": "computer",
-        "children": [],
+        "children": ["macbook"],
         "context": {}
     },
     {
@@ -31,6 +31,13 @@
         "name": "Home",
         "hasChildren": false,
         "children": [],
+        "context": {}
+    },
+    {
+        "name": "Macbook Air",
+        "hasChildren": false,
+        "children": [],
+        "parent": "macbook",
         "context": {}
     }
   ]

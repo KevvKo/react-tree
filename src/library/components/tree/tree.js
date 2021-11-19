@@ -21,17 +21,13 @@ const Tree = (props) => {
 
     tree = service.mapToTree( props.data);
     leafs = tree
-        .filter( treeNode => treeNode.hasParent === false)
-        .map( (treeNode, index ) => {
-            return <Leaf key={index} node={treeNode} />;
-        });  
+        .filter( treeNode => treeNode.hasParent === false); 
 
 
     return(
         <ServiceContext.Provider>
             <ul id='tree'>
-                <Branch />
-                {leafs}
+                <Branch nodes={leafs}/>
             </ul>
         </ServiceContext.Provider>
     );
