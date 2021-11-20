@@ -7,6 +7,7 @@ import Leaf from '../leaf/leaf';
 const Branch = (props) => {
     const nodes = props.nodes;
     const checkboxes = props.checkboxes;
+    
     const branches = nodes.map( node => {
         if(node.hasChildren){ 
             return (
@@ -14,7 +15,10 @@ const Branch = (props) => {
                     <details>
                         <summary>
                             {checkboxes &&
-                                <input type='checkbox'/>
+                                <input 
+                                    type='checkbox' 
+                                    onClick={props.onSelect}
+                                />
                             }
                             {node.name}
                         </summary>
@@ -22,6 +26,7 @@ const Branch = (props) => {
                         <Branch 
                             nodes={node.childrenNodes} 
                             checkboxes={checkboxes}
+                            onSelect={props.onSelect}
                             />
                         </ul>
                     </details>
@@ -29,7 +34,13 @@ const Branch = (props) => {
             );
         }
         else {
-            return <Leaf node={node} checkboxes={checkboxes} />; 
+            return (         
+                <Leaf 
+                    node={node} 
+                    checkboxes={checkboxes} 
+                    onSelect={props.onSelect}
+                /> 
+            );
         }
     });
     return (
@@ -40,8 +51,9 @@ const Branch = (props) => {
 };
 
 Branch.propTypes = {
+    checkboxes: PropTypes.bool,
     nodes: PropTypes.array,
-    checkboxes: PropTypes.bool
+    onSelect: PropTypes.func
 };
 
 export default Branch;

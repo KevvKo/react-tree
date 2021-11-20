@@ -26,17 +26,18 @@ const Tree = (props) => {
 
 
     return(
-        <ServiceContext.Provider>
+        <ServiceContext.Provider value={service}>
             <ul id='tree'>
-                <Branch nodes={leafs} checkboxes={ checkboxes }/>
+                <Branch nodes={leafs} checkboxes={ checkboxes } onSelect={props.onSelect}/>
             </ul>
         </ServiceContext.Provider>
     );
 };
 
 Tree.propTypes = {
+    checkboxes: PropTypes.bool,
     data: PropTypes.array,
-    checkboxes: PropTypes.bool
+    onSelect: PropTypes.func
 };
 
 Tree.defaultProps = {

@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      <Tree data={ data }/>  
+      <Tree data={ data } onSelect={() => { console.log("hello")}}/>  
     </div>
   );
 }

@@ -6,11 +6,11 @@ const Leaf = (props) => {
 
     let treeNode = props.node; 
     const checkbox = props.checkboxes;
-
+    console.log(props.onSelect)
     return(
         <li className='leaf'>
             {checkbox &&
-                <input type='checkbox'/>
+                <input type='checkbox' onClick={props.onSelect}/>
             }
             {treeNode.name }
 
@@ -19,8 +19,9 @@ const Leaf = (props) => {
 };
 
 Leaf.propTypes = {
+    checkboxes: PropTypes.bool,
     node: PropTypes.object,
-    checkboxes: PropTypes.bool
+    onSelect: PropTypes.func
 };
 
 export default Leaf;
