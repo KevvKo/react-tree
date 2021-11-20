@@ -41,6 +41,12 @@
         "context": {}
     },
     {
+        "name": "Macbook 14",
+        "children": [],
+        "parent": "macbook",
+        "context": {}
+    },
+    {
         "name": "Furniture",
         "hasChildren": false,
         "children": [],

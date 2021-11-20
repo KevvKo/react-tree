@@ -41,7 +41,7 @@ Tree.propTypes = {
 
 Tree.defaultProps = {
     checkboxes: true
-}
+};
 
 
 export default Tree;

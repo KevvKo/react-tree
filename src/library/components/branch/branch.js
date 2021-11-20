@@ -11,16 +11,20 @@ const Branch = (props) => {
         if(node.hasChildren){ 
             return (
                 <li className='branch'>
-                    {checkboxes &&
-                        <input type='checkbox'/>
-                     }
-                    {node.name}
-                    <ul>
+                    <details>
+                        <summary>
+                            {checkboxes &&
+                                <input type='checkbox'/>
+                            }
+                            {node.name}
+                        </summary>
+                        <ul>
                         <Branch 
                             nodes={node.childrenNodes} 
                             checkboxes={checkboxes}
-                        />
-                    </ul>
+                            />
+                        </ul>
+                    </details>
                 </li>
             );
         }
