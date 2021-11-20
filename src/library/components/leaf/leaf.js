@@ -6,13 +6,15 @@ const Leaf = (props) => {
 
     let treeNode = props.node; 
     const checkbox = props.checkboxes;
-    console.log(props.onSelect)
     return(
         <li className='leaf'>
             {checkbox &&
-                <input type='checkbox' onClick={props.onSelect}/>
+                <input 
+                type='checkbox' 
+                role='checkbox'
+                onClick={props.onSelect}/>
             }
-            {treeNode.name }
+            {treeNode?.name }
 
         </li>
     );
