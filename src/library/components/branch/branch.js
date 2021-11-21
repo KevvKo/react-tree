@@ -7,7 +7,6 @@ import Leaf from '../leaf/leaf';
 const Branch = (props) => {
     const nodes = props.nodes;
     const checkboxes = props.checkboxes;
-    
     const branches = nodes.map( (node, index) => {
         if(node.hasChildren){ 
             return (

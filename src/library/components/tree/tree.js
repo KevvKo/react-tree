@@ -24,11 +24,14 @@ const Tree = (props) => {
     leafs = tree
         .filter( treeNode => treeNode.hasParent === false); 
 
-
     return(
         <ServiceContext.Provider value={service}>
             <ul id='tree'>
-                <Branch nodes={leafs} checkboxes={ checkboxes } onSelect={props.onSelect}/>
+                <Branch 
+                nodes={leafs} 
+                checkboxes={ checkboxes } 
+                onSelect={props.onSelect}
+                />
             </ul>
         </ServiceContext.Provider>
     );
