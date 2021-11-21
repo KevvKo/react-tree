@@ -45,6 +45,7 @@ describe('treeService.mapToTree',() => {
                 hasParent: false,
                 parent: undefined,
                 children: ['abc', 'def'],
+                state: 'closed',
                 context: {}
             });
         });
@@ -56,6 +57,7 @@ describe('treeService.mapToTree',() => {
                 hasParent: true,
                 parent: 'xyz',
                 children: [],
+                state: 'closed',
                 context: {}
             });
         });

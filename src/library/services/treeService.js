@@ -40,25 +40,39 @@ const treeService = {
             hasParent: dataObject.parent?.length > 0,
             parent: dataObject?.parent,
             children: dataObject.children,
+            state: 'closed',
             context: dataObject?.context
         };
     },
 
     traverse: () => {
         
+    },
+
+    /**
+     * 
+     * @param {Object} node 
+     * @param {Boolean} selectParents
+     * @param {Boolean} selectChildren
+     */
+    changeNode: ( node, selectParents, selectChildren ) => {
+        if(node.hasParent){
+            treeService.modifyParent(node.parentNode);            
+        }
+        if(node.hasChildren){
+            treeService.modifiyChildren(node.childrenNodes);            
+        }
+    },
+
+    modifiyChildren: () => {
+
+    },
+
+    modifyParent: () => {
+
     }
-};
-
-const branchModifier = () => {
-
-};
-
-const leafModifier = () => {
-
 };
 
 export {
     treeService,
-    branchModifier,
-    leafModifier
 };

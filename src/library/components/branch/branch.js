@@ -26,6 +26,8 @@ const Branch = (props) => {
                             nodes={node.childrenNodes} 
                             checkboxes={checkboxes}
                             onSelect={props.onSelect}
+                            selectParents={props.selectParents}
+                            selectChildren={props.selectChildren}
                             />
                         </ul>
                     </details>
@@ -38,6 +40,8 @@ const Branch = (props) => {
                     node={node} 
                     checkboxes={checkboxes} 
                     onSelect={props.onSelect}
+                    selectParents={props.selectParents}
+                    selectChildren={props.selectChildren}
                 /> 
             );
         }
@@ -52,7 +56,9 @@ const Branch = (props) => {
 Branch.propTypes = {
     checkboxes: PropTypes.bool,
     nodes: PropTypes.array,
-    onSelect: PropTypes.func
+    onSelect: PropTypes.func,
+    selectChildren: PropTypes.bool,
+    selectParents: PropTypes.bool
 };
 
 export default Branch;

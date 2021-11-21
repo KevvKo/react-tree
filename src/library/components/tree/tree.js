@@ -1,10 +1,10 @@
 import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
 // Components
-import Leaf from '../leaf/leaf';
 import Branch from '../branch/branch';
-// Services
-import { treeService } from '../../services/treeService';
+// Hooks
+import { useServiceContext } from '../../hooks/useService';
+import { serviceContext } from '../../context/serviceContext';
 
 /**
  * @todo use summary for collapsible elements!
@@ -14,8 +14,7 @@ import { treeService } from '../../services/treeService';
 
 const Tree = (props) => {
 
-    const service = treeService;
-    const ServiceContext = createContext(service);
+    const service =  useServiceContext();
     let tree;
     let leafs;
     const checkboxes = props.checkboxes;
@@ -25,26 +24,32 @@ const Tree = (props) => {
         .filter( treeNode => treeNode.hasParent === false); 
 
     return(
-        <ServiceContext.Provider value={service}>
+        <serviceContext.Provider value={service}>
             <ul id='tree'>
                 <Branch 
                 nodes={leafs} 
-                checkboxes={ checkboxes } 
+                checkboxes={checkboxes} 
                 onSelect={props.onSelect}
+                selectParents={props.selectParents}
+                selectChildren={props.selectChildren}
                 />
             </ul>
-        </ServiceContext.Provider>
+        </serviceContext.Provider>
     );
 };
 
 Tree.propTypes = {
     checkboxes: PropTypes.bool,
     data: PropTypes.array,
-    onSelect: PropTypes.func
+    onSelect: PropTypes.func,
+    selectChildren: PropTypes.bool,
+    selectParents: PropTypes.bool
 };
 
 Tree.defaultProps = {
-    checkboxes: true
+    checkboxes: true,
+    selectChildren: true,
+    selectParents: true
 };
 
 
