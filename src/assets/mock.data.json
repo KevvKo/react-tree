@@ -1,55 +1,40 @@
 [
     {
         "name": "computer",
-        "hasChildren": true,
-        "children": ["surface", "macbook", "notebook"],
         "context": {}
     },
     {
         "name": "notebook",
-        "hasChildren": false,
-        "children": [],
         "context": {},
         "parent": "computer"
 
     },
     {
         "name": "macbook",
-        "hasChildren": true,
         "parent": "computer",
-        "children": ["macbook"],
         "context": {}
     },
     {
         "name": "surface",
-        "hasChildren": false,
-        "children": [],
         "parent": "computer",
         "context": {}
     },
     {
         "name": "Home",
-        "hasChildren": false,
-        "children": ["Furniture"],
         "context": {}
     },
     {
         "name": "Macbook Air",
-        "hasChildren": true,
-        "children": [],
         "parent": "macbook",
         "context": {}
     },
     {
         "name": "Macbook 14",
-        "children": [],
         "parent": "macbook",
         "context": {}
     },
     {
         "name": "Furniture",
-        "hasChildren": false,
-        "children": [],
         "parent": "Home",
         "context": {}
     }

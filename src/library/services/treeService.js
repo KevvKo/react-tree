@@ -8,27 +8,30 @@ const treeService = {
      */
     mapToTree: ( dataObject ) => {
 
-        const treeNodes = dataObject.map( ( element ) => {
-           return treeService.mapToTreeNode(element);
-                
-        });
+        const treeNodes = treeService.mapToTreeNodes( dataObject );
+        return treeService.mapToParentAndChild( treeNodes );
+    },
 
-        return treeNodes.map( (node) => {
+    /**
+     * 
+     * @param {Array} nodes 
+     */
+    mapToParentAndChild: ( nodes ) => {
+        return nodes.map( (node) => {
             if(node.hasParent){
-                node.parentNode = treeNodes.find( 
+                const parentNode = nodes.find( 
                     element => element.name === node.parent
                 );
+                
+                parentNode.hasChildren = true;
+                parentNode.childNodes.push(node);
+                node.parentNode = parentNode;
+
             }
 
-            if(node.hasChildren){
-                node.childrenNodes = treeNodes.filter( 
-                    element => element.parent === node.name
-                );
-            }
             return node;
         });
     },
-
     /**
      * @params (Object) data
      * @returns (treeNode)
@@ -36,14 +39,24 @@ const treeService = {
     mapToTreeNode: ( dataObject ) => {
         return {
             name: dataObject?.name,
-            hasChildren: dataObject?.children.length > 0,
             hasParent: dataObject.parent?.length > 0,
             parent: dataObject?.parent,
             children: dataObject.children,
             isOpen: false,
+            childNodes: [],
             state: 'closed',
             context: dataObject?.context
         };
+    },
+
+    /**
+     * 
+     * @param {Array} data 
+     */
+    mapToTreeNodes: ( data ) => {
+        return data.map( ( element ) => {
+            return treeService.mapToTreeNode(element);     
+         });
     },
 
     traverse: () => {
@@ -77,7 +90,7 @@ const treeService = {
      * @param {Boolean} selectChildren 
      */
     modifiyChildren: ( node, selectChildren ) => {
-        node.childrenNodes.map((childNode) => {
+        node.childNodes.map((childNode) => {
             childNode.isOpen = !childNode.isOpen;
             if(childNode.hasChildren){
                 treeService.modifiyChildren(childNode);

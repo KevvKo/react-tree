@@ -33,7 +33,7 @@ const Branch = (props) => {
                         </summary>
                         <ul>
                         <Branch 
-                            nodes={node.childrenNodes} 
+                            nodes={node.childNodes} 
                             checkboxes={checkboxes}
                             onSelect={props.onSelect}
                             selectParents={props.selectParents}
