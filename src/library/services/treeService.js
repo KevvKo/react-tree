@@ -40,6 +40,7 @@ const treeService = {
             hasParent: dataObject.parent?.length > 0,
             parent: dataObject?.parent,
             children: dataObject.children,
+            isOpen: false,
             state: 'closed',
             context: dataObject?.context
         };
@@ -57,19 +58,43 @@ const treeService = {
      */
     changeNode: ( node, selectParents, selectChildren ) => {
         if(node.hasParent){
-            treeService.modifyParent(node.parentNode);            
+            treeService.modifyParent(
+                node, 
+                selectParents
+            );            
         }
         if(node.hasChildren){
-            treeService.modifiyChildren(node.childrenNodes);            
+            treeService.modifiyChildren(
+                node, 
+                selectChildren
+            );            
         }
     },
 
-    modifiyChildren: () => {
-
+    /**
+     * 
+     * @param {Object} node 
+     * @param {Boolean} selectChildren 
+     */
+    modifiyChildren: ( node, selectChildren ) => {
+        node.childrenNodes.map((childNode) => {
+            childNode.isOpen = !childNode.isOpen;
+            if(childNode.hasChildren){
+                treeService.modifiyChildren(childNode);
+            }
+        });
     },
 
-    modifyParent: () => {
-
+    /**
+     * 
+     * @param {Object} node 
+     * @param {Boolean} selectParents 
+     */
+    modifyParent: ( node, selectParents ) => {
+        while( node.parentNode ){
+            node = node.parentNode;
+            node.isOpen = !node.isOpen;
+        }
     }
 };
 

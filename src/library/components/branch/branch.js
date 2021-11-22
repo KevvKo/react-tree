@@ -3,12 +3,22 @@ import PropTypes from 'prop-types';
 import './branch.css';
 // Components 
 import Leaf from '../leaf/leaf';
+// Hooks
+import { useServiceContext } from '../../hooks/useService';
 
 const Branch = (props) => {
     const nodes = props.nodes;
     const checkboxes = props.checkboxes;
+    const service = useServiceContext();
+
     const branches = nodes.map( (node, index) => {
+
         if(node.hasChildren){ 
+            
+            const handleClick = () => {
+                service.changeNode( node );
+            };    
+
             return (
                 <li className='branch' key={index}>
                     <details>
@@ -16,7 +26,7 @@ const Branch = (props) => {
                             {checkboxes &&
                                 <input 
                                     type='checkbox' 
-                                    onClick={props.onSelect}
+                                    onClick={ handleClick}
                                 />
                             }
                             {node.name}

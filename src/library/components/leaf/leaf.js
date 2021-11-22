@@ -11,7 +11,7 @@ const Leaf = (props) => {
     const service = useServiceContext();
 
     const handleClick = () => {
-        console.log(service)
+        service.changeNode( treeNode );
     };
 
     return(
