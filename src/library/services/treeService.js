@@ -41,7 +41,6 @@ const treeService = {
             name: dataObject?.name,
             hasParent: dataObject.parent?.length > 0,
             parent: dataObject?.parent,
-            children: dataObject.children,
             isOpen: false,
             childNodes: [],
             state: 'closed',

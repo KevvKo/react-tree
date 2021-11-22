@@ -5,22 +5,16 @@ describe('treeService.mapToTree',() => {
     const mock = [
         {
           'name': 'xyz',
-          'hasChildren': true,
-          'children': ['abc', 'def'],
           'context': {}
         },
         {
           'name': 'abc',
-          'hasChildren': false,
-          'children': [],
           'context': {},
           'parent': 'xyz'
     
         },
         {
           'name': 'def',
-          'hasChildren': true,
-          'children': [],
           'parent': 'xyz',
           'context': {}
         },
@@ -41,11 +35,11 @@ describe('treeService.mapToTree',() => {
             const node = mock[0];
             expect(service.mapToTreeNode(node)).toStrictEqual({
                 name: 'xyz',
-                hasChildren: true,
                 hasParent: false,
                 parent: undefined,
-                children: ['abc', 'def'],
+                childNodes: [],
                 state: 'closed',
+                isOpen: false,
                 context: {}
             });
         });
@@ -53,11 +47,11 @@ describe('treeService.mapToTree',() => {
             const node = mock[1];
             expect(service.mapToTreeNode(node)).toStrictEqual({
                 name: 'abc',
-                hasChildren: false,
                 hasParent: true,
                 parent: 'xyz',
-                children: [],
+                childNodes: [],
                 state: 'closed',
+                isOpen: false,
                 context: {}
             });
         });

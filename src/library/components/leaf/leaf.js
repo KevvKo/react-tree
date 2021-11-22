@@ -12,6 +12,7 @@ const Leaf = (props) => {
 
     const handleClick = () => {
         service.changeNode( treeNode );
+        props.onSelect();
     };
 
     return(
