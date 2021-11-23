@@ -69,6 +69,9 @@ const treeService = {
      * @param {Boolean} selectChildren
      */
     changeNode: ( node, selectParents, selectChildren ) => {
+
+        node.isOpen = !node.isOpen;
+
         if(node.hasParent){
             treeService.modifyParent(
                 node, 

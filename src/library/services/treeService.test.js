@@ -1,6 +1,6 @@
 import { treeService } from "./treeService";
 
-describe('treeService.mapToTree',() => {
+describe('treeService',() => {
     const service = treeService;
     const mock = [
         {
@@ -54,6 +54,77 @@ describe('treeService.mapToTree',() => {
                 isOpen: false,
                 context: {}
             });
+        });
+    });
+    
+    describe('changeNode', () => {
+        it('should change the open-property', () => {
+            const nodes = service.mapToTree(mock);
+            
+            service.changeNode(nodes[0]);
+            expect(nodes[0].isOpen).toBe(true);
+            expect(nodes[1].isOpen).toBe(true);
+            expect(nodes[2].isOpen).toBe(true);
+
+            service.changeNode(nodes[0]);
+            expect(nodes[0].isOpen).toBe(false);
+            expect(nodes[1].isOpen).toBe(false);
+            expect(nodes[2].isOpen).toBe(false);
+        });
+    });
+    describe('modifiyParent', () => {
+
+        let node1 = {
+            name: 'xyz',
+            isOpen: false
+        };
+        let node2 = {
+            name: 'xyz',
+            isOpen: false,
+            parentNode: node1
+        };
+        let node3 = {
+            name: 'xyz',
+            isOpen: false,
+            parentNode: node2
+        };
+
+        it('should', () => {
+            service.modifyParent( node3 );
+            expect(node2.isOpen).toBe(true);
+            expect(node1.isOpen).toBe(true);
+
+            service.modifyParent( node3 );
+            expect(node2.isOpen).toBe(false);
+            expect(node1.isOpen).toBe(false);
+        });
+    });
+    describe('modifyChildren', () => {
+
+        let node1 = {
+            name: 'xyz',
+            isOpen: false,
+            childNodes: []
+        };
+        let node2 = {
+            name: 'xyz',
+            isOpen: false,
+        };
+        let node3 = {
+            name: 'xyz',
+            isOpen: false,
+        };
+
+        node1.childNodes.push(node2, node3);
+
+        it('should', () => {
+            service.modifiyChildren( node1 );
+            expect(node2.isOpen).toBe(true);
+            expect(node3.isOpen).toBe(true);
+            
+            service.modifiyChildren( node1 );
+            expect(node2.isOpen).toBe(false);
+            expect(node3.isOpen).toBe(false);
         });
     });
 });
