@@ -56,7 +56,7 @@ describe('treeService',() => {
             });
         });
     });
-    
+
     describe('changeNode', () => {
         it('should change the open-property', () => {
             const nodes = service.mapToTree(mock);
@@ -89,7 +89,7 @@ describe('treeService',() => {
             parentNode: node2
         };
 
-        it('should', () => {
+        it('should change the open-property for parent nodes', () => {
             service.modifyParent( node3 );
             expect(node2.isOpen).toBe(true);
             expect(node1.isOpen).toBe(true);
@@ -117,7 +117,7 @@ describe('treeService',() => {
 
         node1.childNodes.push(node2, node3);
 
-        it('should', () => {
+        it('should change the open-property for childnodes', () => {
             service.modifiyChildren( node1 );
             expect(node2.isOpen).toBe(true);
             expect(node3.isOpen).toBe(true);

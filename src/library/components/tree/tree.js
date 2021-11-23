@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import Branch from '../branch/branch';
 // Hooks
 import { useServiceContext } from '../../hooks/useService';
+import { useTreeContext } from '../../hooks/useTree';
+// Contexts
 import { serviceContext } from '../../context/serviceContext';
+import { treeContext } from '../../context/treeContext';
 
 /**
  * @todo use summary for collapsible elements!
@@ -25,15 +28,17 @@ const Tree = (props) => {
 
     return(
         <serviceContext.Provider value={service}>
-            <ul id='tree'>
-                <Branch 
-                nodes={leafs} 
-                checkboxes={checkboxes} 
-                onSelect={props.onSelect}
-                selectParents={props.selectParents}
-                selectChildren={props.selectChildren}
-                />
-            </ul>
+            <treeContext.Provider value={tree}>
+                <ul id='tree'>
+                    <Branch 
+                    nodes={leafs} 
+                    checkboxes={checkboxes} 
+                    onSelect={props.onSelect}
+                    selectParents={props.selectParents}
+                    selectChildren={props.selectChildren}
+                    />
+                </ul>
+            </treeContext.Provider>
         </serviceContext.Provider>
     );
 };

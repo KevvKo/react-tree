@@ -12,9 +12,9 @@ const Branch = (props) => {
     const service = useServiceContext();
 
     const branches = nodes.map( (node, index) => {
-
+    
         if(node.hasChildren){ 
-            
+               
             const handleClick = () => {
                 service.changeNode( node );
             };    
