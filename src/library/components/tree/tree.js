@@ -17,7 +17,7 @@ import { treeContext } from '../../context/treeContext';
 
 const Tree = (props) => {
 
-    const service =  useServiceContext();
+    const service = useServiceContext();
     let tree;
     let leafs;
     const checkboxes = props.checkboxes;

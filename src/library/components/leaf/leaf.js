@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import './leaf.css';
 // Hooks
 import { useServiceContext } from '../../hooks/useService';
+import { useTreeContext } from '../../hooks/useTree';
 
 const Leaf = (props) => {
 
     let treeNode = props.node; 
     const checkbox = props.checkboxes;
     const service = useServiceContext();
-
+    const tree = useTreeContext();
+    
     const handleClick = () => {
         service.changeNode( treeNode );
 
