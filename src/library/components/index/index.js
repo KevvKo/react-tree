@@ -7,7 +7,7 @@ import { useTreeContext } from '../../hooks/useTree';
 
 const Index = (props) => {
 
-    const tree = useTreeContext();
+    const tree = useTreeContext().tree;
     const checkboxes = props.checkboxes;
     const leafs = tree
         .filter( treeNode => treeNode.hasParent === false); 
