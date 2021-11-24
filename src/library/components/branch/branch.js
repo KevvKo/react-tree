@@ -6,13 +6,12 @@ import Leaf from '../leaf/leaf';
 // Hooks
 import { useServiceContext } from '../../hooks/useService';
 import { useTreeContext } from '../../hooks/useTree';
-
 const Branch = (props) => {
     const nodes = props.nodes;
     const checkboxes = props.checkboxes;
     const service = useServiceContext();
     const tree = useTreeContext();
-
+    
     const branches = nodes.map( (node, index) => {
     
         if(node.hasChildren){ 

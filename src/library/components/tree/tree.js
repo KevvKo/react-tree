@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 // Components
 import Branch from '../branch/branch';
 // Hooks
 import { useServiceContext } from '../../hooks/useService';
-import { useTreeContext } from '../../hooks/useTree';
 // Contexts
 import { serviceContext } from '../../context/serviceContext';
 import { treeContext } from '../../context/treeContext';
@@ -18,17 +17,27 @@ import { treeContext } from '../../context/treeContext';
 const Tree = (props) => {
 
     const service = useServiceContext();
-    let tree;
+    const [ tree, setTree ] = useState([]);
     let leafs;
     const checkboxes = props.checkboxes;
 
-    tree = service.mapToTree( props.data);
+    useEffect(() => {
+        setTree( service.mapToTree( props.data) );
+    }, []);
+
     leafs = tree
         .filter( treeNode => treeNode.hasParent === false); 
+    
+    const treeContainer = {
+        tree: tree,
+        setTree: ( value ) => {
+            setTree(value);
+        }
+    };
 
     return(
         <serviceContext.Provider value={service}>
-            <treeContext.Provider value={tree}>
+            <treeContext.Provider value={ treeContainer }>
                 <ul id='tree'>
                     <Branch 
                     nodes={leafs} 
