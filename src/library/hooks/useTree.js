@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { treeContext } from '../treeContext';
+import { treeContext } from '../context/treeContext';
 
 const useTreeContext = () => {
     return useContext( treeContext );
