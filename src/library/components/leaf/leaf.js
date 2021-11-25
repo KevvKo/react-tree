@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './leaf.css';
 // Hooks
 import { useServiceContext } from '../../hooks/useService';
-import { useTreeContext } from '../../hooks/useTree';
+import { useTreeContext } from '../../hooks/useTreeContext';
 
 const Leaf = (props) => {
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 // Components
 import Branch from '../branch/branch';
 // Hooks
-import { useTreeContext } from '../../hooks/useTree';
+import { useTreeContext } from '../../hooks/useTreeContext';
 
 const Index = (props) => {
 
