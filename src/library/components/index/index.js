@@ -28,7 +28,6 @@ const Index = (props) => {
 Index.propTypes = {
     checkboxes: PropTypes.bool,
     children: PropTypes.node,
-    data: PropTypes.array,
     onSelect: PropTypes.func,
     selectChildren: PropTypes.bool,
     selectParents: PropTypes.bool

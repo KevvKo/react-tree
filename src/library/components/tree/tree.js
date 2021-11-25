@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 // Components
 import Provider from '../Provider/provider';
@@ -11,7 +11,6 @@ import Index from '../index/index';
  */
 
 const Tree = (props) => {
-
     return(
         <Provider data={ props.data }>
             <Index 
