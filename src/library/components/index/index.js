@@ -13,7 +13,7 @@ const Index = (props) => {
         .filter( treeNode => treeNode.hasParent === false); 
     
     return(
-        <ul id='tree'>
+        <ul>
             <Branch 
             nodes={leafs} 
             checkboxes={checkboxes} 

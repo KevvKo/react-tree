@@ -24,6 +24,6 @@ describe('Leaf Component', () => {
 
     render(<Leaf node={ node } checkboxes onSelect={ onSelect} />);
     fireEvent.click( screen.getByRole(/checkbox/));
-    expect(onSelect.mock.calls.length).toEqual(1);
+    expect(onSelect).toHaveBeenCalled();
   });
 });

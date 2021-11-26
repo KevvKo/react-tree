@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import Tree from './tree';
 
@@ -28,5 +28,15 @@ describe('Tree Component', () => {
   ];
   it('should render properly', () => {
     render(<Tree data={ mock } />);
+  });
+  it('should render all nodes properly', () => {
+    render(<Tree data={ mock } />);
+    expect(screen.getByText(/xyz/)).toBeTruthy();
+    expect(screen.getByText(/abc/)).toBeTruthy();
+    expect(screen.getByText(/def/)).toBeTruthy();
+  });
+  it('should render all expected checkboxes' ,() => {
+    render(<Tree data={ mock }/>);
+    expect(screen.getAllByRole(/checkbox/)).toHaveLength(3);
   });
 });

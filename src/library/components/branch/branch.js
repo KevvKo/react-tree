@@ -6,6 +6,7 @@ import Leaf from '../leaf/leaf';
 // Hooks
 import { useServiceContext } from '../../hooks/useService';
 import { useTreeContext } from '../../hooks/useTreeContext';
+
 const Branch = (props) => {
     const nodes = props.nodes;
     const checkboxes = props.checkboxes;
