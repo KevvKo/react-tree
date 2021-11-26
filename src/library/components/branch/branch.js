@@ -11,14 +11,25 @@ const Branch = (props) => {
     const nodes = props.nodes;
     const checkboxes = props.checkboxes;
     const service = useServiceContext();
-    const tree = useTreeContext();
-    
+    const tree = useTreeContext().tree;
+    const setTree = useTreeContext().setTree;
+
     const branches = nodes.map( (node, index) => {
     
         if(node.hasChildren){ 
                
             const handleClick = () => {
                 service.changeNode( node );
+
+                const newTree = [...tree];
+                const index = newTree.indexOf(node);
+                
+                newTree[index] = node;
+                setTree(newTree);
+
+                if(props.onSelect){
+                    props.onSelect();
+                }
             };    
 
             return (

@@ -10,10 +10,17 @@ const Leaf = (props) => {
     let treeNode = props.node; 
     const checkbox = props.checkboxes;
     const service = useServiceContext();
-    const tree = useTreeContext();
-    
+    const tree = useTreeContext().tree;
+    const setTree = useTreeContext().setTree;
+
     const handleClick = () => {
         service.changeNode( treeNode );
+
+        const newTree = [...tree];
+        const index = newTree.indexOf(treeNode);
+        
+        newTree[index] = treeNode;
+        setTree(newTree);
 
         if(props.onSelect){
             props.onSelect();

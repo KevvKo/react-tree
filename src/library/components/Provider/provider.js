@@ -11,7 +11,7 @@ const Provider = (props) => {
     const [ tree, setTree ] = useState([]);
 
     useEffect(() => {
-        setTree( service.mapToTree( props.data) );
+        setTree( service.mapToTree( props.data ));
     }, []);
     
     const treeContainer = {
