@@ -41,7 +41,8 @@ const treeService = {
             name: dataObject?.name,
             hasParent: dataObject.parent?.length > 0,
             parent: dataObject?.parent,
-            isOpen: false,
+            open: false,
+            checked: false,
             childNodes: [],
             state: 'closed',
             context: dataObject?.context
@@ -70,15 +71,15 @@ const treeService = {
      */
     changeNode: ( node, selectParents, selectChildren ) => {
 
-        node.isOpen = !node.isOpen;
+        node.checked = !node.checked;
 
-        if(node.hasParent){
+        if(node.hasParent && selectParents){
             treeService.modifyParent(
                 node, 
                 selectParents
             );            
         }
-        if(node.hasChildren){
+        if(node.hasChildren && selectChildren){
             treeService.modifiyChildren(
                 node, 
                 selectChildren
