@@ -109,8 +109,13 @@ const treeService = {
      */
     modifyParent: ( node, selectParents ) => {
         while( node.parentNode ){
-            node = node.parentNode;
-            node.checked = !node.checked;
+            let parentNode = node.parentNode;
+            
+            if(!parentNode.checked){
+                parentNode.checked = !parentNode.checked;
+            }
+
+            node = parentNode;
         }
     },
 

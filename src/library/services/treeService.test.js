@@ -95,9 +95,22 @@ describe('treeService',() => {
             expect(nodes[2].checked).toBe(true);
 
             service.changeNode(nodes[2], true);
-            expect(nodes[0].checked).toBe(false);
+            expect(nodes[0].checked).toBe(true);
             expect(nodes[1].checked).toBe(false);
             expect(nodes[2].checked).toBe(false);
+        });
+        it('should not uncheck the parent if a child is clicked', () => {
+            const nodes = service.mapToTree(mock);
+
+            service.changeNode(nodes[2], true);
+            expect(nodes[0].checked).toBe(true);
+            expect(nodes[1].checked).toBe(false);
+            expect(nodes[2].checked).toBe(true);
+
+            service.changeNode(nodes[1], true);
+            expect(nodes[0].checked).toBe(true);
+            expect(nodes[1].checked).toBe(true);
+            expect(nodes[2].checked).toBe(true);
         });
     });
     describe('modifiyParent', () => {
@@ -123,8 +136,8 @@ describe('treeService',() => {
             expect(node1.checked).toBe(true);
 
             service.modifyParent( node3 );
-            expect(node2.checked).toBe(false);
-            expect(node1.checked).toBe(false);
+            expect(node2.checked).toBe(true);
+            expect(node1.checked).toBe(true);
         });
     });
     describe('modifyChildren', () => {
