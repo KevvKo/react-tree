@@ -2,6 +2,12 @@
     list-style: none;
 }
 
+.branch  details{
+    display: inline-block;
+}
+.branch summary, input{
+    cursor: pointer;
+}
 .branch ul{
     padding-left: 30px;
 }
