@@ -37,9 +37,10 @@ describe('treeService',() => {
                 name: 'xyz',
                 hasParent: false,
                 parent: undefined,
+                checked: false,
                 childNodes: [],
                 state: 'closed',
-                isOpen: false,
+                open: false,
                 context: {}
             });
         });
@@ -49,82 +50,109 @@ describe('treeService',() => {
                 name: 'abc',
                 hasParent: true,
                 parent: 'xyz',
+                checked: false,
                 childNodes: [],
                 state: 'closed',
-                isOpen: false,
+                open: false,
                 context: {}
             });
         });
     });
 
     describe('changeNode', () => {
-        it('should change the open-property', () => {
+        it('should change the checked-property', () => {
             const nodes = service.mapToTree(mock);
             
             service.changeNode(nodes[0]);
-            expect(nodes[0].isOpen).toBe(true);
-            expect(nodes[1].isOpen).toBe(true);
-            expect(nodes[2].isOpen).toBe(true);
+            expect(nodes[0].checked).toBe(true);
+            expect(nodes[1].checked).toBe(false);
+            expect(nodes[2].checked).toBe(false);
 
             service.changeNode(nodes[0]);
-            expect(nodes[0].isOpen).toBe(false);
-            expect(nodes[1].isOpen).toBe(false);
-            expect(nodes[2].isOpen).toBe(false);
+            expect(nodes[0].checked).toBe(false);
+            expect(nodes[1].checked).toBe(false);
+            expect(nodes[2].checked).toBe(false);
+        });
+        it('should change the checked-property for all children', () => {
+            const nodes = service.mapToTree(mock);
+            
+            service.changeNode(nodes[0], false, true);
+            expect(nodes[0].checked).toBe(true);
+            expect(nodes[1].checked).toBe(true);
+            expect(nodes[2].checked).toBe(true);
+
+            service.changeNode(nodes[0], false, true);
+            expect(nodes[0].checked).toBe(false);
+            expect(nodes[1].checked).toBe(false);
+            expect(nodes[2].checked).toBe(false);
+        });
+        it('should change the checked-property for all parents', () => {
+            const nodes = service.mapToTree(mock);
+            
+            service.changeNode(nodes[2], true);
+            expect(nodes[0].checked).toBe(true);
+            expect(nodes[1].checked).toBe(false);
+            expect(nodes[2].checked).toBe(true);
+
+            service.changeNode(nodes[2], true);
+            expect(nodes[0].checked).toBe(false);
+            expect(nodes[1].checked).toBe(false);
+            expect(nodes[2].checked).toBe(false);
         });
     });
     describe('modifiyParent', () => {
 
         let node1 = {
             name: 'xyz',
-            isOpen: false
+            checked: false
         };
         let node2 = {
             name: 'xyz',
-            isOpen: false,
+            checked: false,
             parentNode: node1
         };
         let node3 = {
             name: 'xyz',
-            isOpen: false,
+            checked: false,
             parentNode: node2
         };
 
-        it('should change the open-property for parent nodes', () => {
+        it('should change the checked-property for parent nodes', () => {
             service.modifyParent( node3 );
-            expect(node2.isOpen).toBe(true);
-            expect(node1.isOpen).toBe(true);
+            expect(node2.checked).toBe(true);
+            expect(node1.checked).toBe(true);
 
             service.modifyParent( node3 );
-            expect(node2.isOpen).toBe(false);
-            expect(node1.isOpen).toBe(false);
+            expect(node2.checked).toBe(false);
+            expect(node1.checked).toBe(false);
         });
     });
     describe('modifyChildren', () => {
 
         let node1 = {
             name: 'xyz',
-            isOpen: false,
+            checked: false,
             childNodes: []
         };
         let node2 = {
             name: 'xyz',
-            isOpen: false,
+            checked: false,
         };
         let node3 = {
             name: 'xyz',
-            isOpen: false,
+            checked: false,
         };
 
         node1.childNodes.push(node2, node3);
 
-        it('should change the open-property for childnodes', () => {
+        it('should change the checked-property for childnodes', () => {
             service.modifiyChildren( node1 );
-            expect(node2.isOpen).toBe(true);
-            expect(node3.isOpen).toBe(true);
+            expect(node2.checked).toBe(true);
+            expect(node3.checked).toBe(true);
             
             service.modifiyChildren( node1 );
-            expect(node2.isOpen).toBe(false);
-            expect(node3.isOpen).toBe(false);
+            expect(node2.checked).toBe(false);
+            expect(node3.checked).toBe(false);
         });
     });
 });
