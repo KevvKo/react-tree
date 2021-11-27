@@ -114,6 +114,10 @@ const treeService = {
         }
     },
 
+    /**
+     * 
+     * @param {Object} node 
+     */
     toggleNode: ( node ) => {
         node.open = !node.open;
     }

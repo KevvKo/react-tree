@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Branch from './branch';
 import Provider from '../Provider/provider';
 import { treeService } from '../../services/treeService';
@@ -76,6 +76,15 @@ describe('Branch Component', () => {
       expect(screen.getByText(/xyz/)).toBeTruthy();
       expect(screen.getByText(/xyz/).classList).toContain('leaf');
       expect(screen.getAllByRole(/checkbox/)).toHaveLength(1);
+    });
+    it('should render data properly', () => {
+      render(
+        <Provider data={mock}>
+          <Branch nodes={ mockNodes }/>
+        </Provider>
+      );
+      fireEvent.click( screen.getByRole('tree-list'));
+      expect(mockNodes[0].open).toBe(true);
     });
 });
   

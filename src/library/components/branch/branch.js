@@ -6,6 +6,7 @@ import Leaf from '../leaf/leaf';
 // Hooks
 import { useServiceContext } from '../../hooks/useService';
 import { useTreeContext } from '../../hooks/useTreeContext';
+import { treeService } from '../../services/treeService';
 
 const Branch = (props) => {
     const nodes = props.nodes;
@@ -19,14 +20,12 @@ const Branch = (props) => {
         if(node.hasChildren){ 
 
             const handleClick = () => {
-                // service.changeNode( node );
-
+                treeService.toggleNode(node);
                 const newTree = [...tree];
                 const index = newTree.indexOf(node);
                 
                 newTree[index] = node;
                 setTree(newTree);
-
             };
 
             const handleChange = () => {
@@ -51,7 +50,7 @@ const Branch = (props) => {
             return (
                 <li className='branch' key={index}>
                     <details>
-                        <summary onClick={handleClick}>
+                        <summary onClick={handleClick} role='tree-list'>
                             {checkboxes &&
                                 <input 
                                     type='checkbox' 
