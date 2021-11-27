@@ -59,10 +59,6 @@ const treeService = {
          });
     },
 
-    traverse: () => {
-        
-    },
-
     /**
      * 
      * @param {Object} node 
@@ -80,7 +76,7 @@ const treeService = {
             );            
         }
         if(node.hasChildren && selectChildren){
-            treeService.modifiyChildren(
+            treeService.modifyChildren(
                 node, 
                 selectChildren
             );            
@@ -92,12 +88,15 @@ const treeService = {
      * @param {Object} node 
      * @param {Boolean} selectChildren 
      */
-    modifiyChildren: ( node, selectChildren ) => {
+    modifyChildren: ( node, selectChildren ) => {
         
         node.childNodes.map((childNode) => {
-            childNode.checked = !childNode.checked;
-            if(childNode.hasChildren){
-                treeService.modifiyChildren(childNode);
+            if(node.checked !== childNode.checked){
+                childNode.checked = !childNode.checked;
+            }
+
+            if(childNode.hasChildren && selectChildren){
+                    treeService.modifyChildren(childNode);
             }
         });
     },

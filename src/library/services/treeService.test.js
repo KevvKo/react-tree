@@ -1,3 +1,4 @@
+import { node } from "prop-types";
 import { treeService } from "./treeService";
 
 describe('treeService',() => {
@@ -145,6 +146,7 @@ describe('treeService',() => {
         let node1 = {
             name: 'xyz',
             checked: false,
+            hasChildren: true,
             childNodes: []
         };
         let node2 = {
@@ -159,11 +161,25 @@ describe('treeService',() => {
         node1.childNodes.push(node2, node3);
 
         it('should change the checked-property for childnodes', () => {
-            service.modifiyChildren( node1 );
+            node1.checked = true;
+            service.modifyChildren( node1, true );
             expect(node2.checked).toBe(true);
             expect(node3.checked).toBe(true);
             
-            service.modifiyChildren( node1 );
+            node1.checked = false;
+            service.modifyChildren( node1, true );
+            expect(node2.checked).toBe(false);
+            expect(node3.checked).toBe(false);
+        });
+        it('should not toggle the checked-property', () => {
+            treeService.changeNode(node1, true, true);
+            expect(node1.checked).toBe(true);
+            expect(node2.checked).toBe(true);
+            expect(node3.checked).toBe(true);
+
+            node2.checked = false;
+            treeService.changeNode(node1, true, true);
+            expect(node1.checked).toBe(false);
             expect(node2.checked).toBe(false);
             expect(node3.checked).toBe(false);
         });
