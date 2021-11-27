@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { node } from 'prop-types';
 import './leaf.css';
 // Hooks
 import { useServiceContext } from '../../hooks/useService';
@@ -13,8 +13,12 @@ const Leaf = (props) => {
     const tree = useTreeContext().tree;
     const setTree = useTreeContext().setTree;
 
-    const handleClick = () => {
-        service.changeNode( treeNode );
+    const handleChange = () => {
+        service.changeNode( 
+            treeNode, 
+            props.selectParents, 
+            props.selectChildren 
+        );
 
         const newTree = [...tree];
         const index = newTree.indexOf(treeNode);
@@ -33,7 +37,8 @@ const Leaf = (props) => {
                 <input 
                 type='checkbox' 
                 role='checkbox'
-                onClick={ handleClick }
+                onChange={ handleChange }
+                checked={treeNode.checked}
                 />
             }
             {treeNode?.name }

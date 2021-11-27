@@ -18,8 +18,8 @@ const Branch = (props) => {
     
         if(node.hasChildren){ 
 
-            const handleDetailsClick = () => {
-                service.changeNode( node );
+            const handleClick = () => {
+                // service.changeNode( node );
 
                 const newTree = [...tree];
                 const index = newTree.indexOf(node);
@@ -29,7 +29,13 @@ const Branch = (props) => {
 
             };
 
-            const handleInputClick = () => {
+            const handleChange = () => {
+
+                service.changeNode( 
+                    node, 
+                    props.selectParents, 
+                    props.selectChildren 
+                );
 
                 const newTree = [...tree];
                 const index = newTree.indexOf(node);
@@ -44,12 +50,13 @@ const Branch = (props) => {
 
             return (
                 <li className='branch' key={index}>
-                    <details onClick={handleDetailsClick}>
-                        <summary>
+                    <details>
+                        <summary onClick={handleClick}>
                             {checkboxes &&
                                 <input 
                                     type='checkbox' 
-                                    onClick={handleInputClick}
+                                    onChange={handleChange}
+                                    checked={node.checked}
                                 />
                             }
                             {node.name}

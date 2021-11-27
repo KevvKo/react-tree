@@ -93,8 +93,10 @@ const treeService = {
      * @param {Boolean} selectChildren 
      */
     modifiyChildren: ( node, selectChildren ) => {
+        
         node.childNodes.map((childNode) => {
-            childNode.isOpen = !childNode.isOpen;
+
+            childNode.checked = !childNode.checked;
             if(childNode.hasChildren){
                 treeService.modifiyChildren(childNode);
             }
@@ -109,7 +111,7 @@ const treeService = {
     modifyParent: ( node, selectParents ) => {
         while( node.parentNode ){
             node = node.parentNode;
-            node.isOpen = !node.isOpen;
+            node.checked = !node.checked;
         }
     }
 };
