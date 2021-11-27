@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Branch from './branch';
+import Provider from '../Provider/provider';
 import { treeService } from '../../services/treeService';
 
 describe('Branch Component', () => {
@@ -33,17 +34,29 @@ describe('Branch Component', () => {
       .filter( treeNode => treeNode.hasParent === false); 
 
     it('should render properly', () => {
-      render(<Branch nodes={ mockNodes }/>);
+      render(
+        <Provider data={mock}>
+          <Branch nodes={ mockNodes }/>
+        </Provider>
+      );
     });
     it('should render data properly', () => {
-      render(<Branch nodes={ mockNodes }/>);
+      render(
+        <Provider data={mock}>
+          <Branch nodes={ mockNodes }/>
+        </Provider>
+      );
       expect(screen.getByText(/xyz/)).toBeTruthy();
       expect(screen.getByText(/abc/)).toBeTruthy();
       expect(screen.getByText(/def/)).toBeTruthy();
       expect(screen.queryByRole(/checkbox/)).toBeFalsy();
     });
     it('should render all checkboxes', () => {
-      render(<Branch nodes={ mockNodes } checkboxes/>);
+      render(
+        <Provider data={mock}>
+          <Branch nodes={ mockNodes } checkboxes/>
+        </Provider>
+      );
       expect(screen.getAllByRole(/checkbox/)).toHaveLength(3);
     });
     it('should render just a leaf', () => {
@@ -55,7 +68,11 @@ describe('Branch Component', () => {
         }
       ];
 
-      render(<Branch nodes={ leafNode } checkboxes/>);
+      render(
+        <Provider data={mock}>
+          <Branch nodes={ leafNode } checkboxes/>
+        </Provider>
+      );
       expect(screen.getByText(/xyz/)).toBeTruthy();
       expect(screen.getByText(/xyz/).classList).toContain('leaf');
       expect(screen.getAllByRole(/checkbox/)).toHaveLength(1);

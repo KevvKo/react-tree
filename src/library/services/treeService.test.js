@@ -155,4 +155,20 @@ describe('treeService',() => {
             expect(node3.checked).toBe(false);
         });
     });
+    describe('toggleNode', () => {
+        it('should switch the open state for the node', () => {
+            let node = {
+                name: 'xyz',
+                open: false,
+                childNodes: []
+            };
+
+            treeService.toggleNode( node );
+            expect(node.open).toBe(true);
+
+
+            treeService.toggleNode( node );
+            expect(node.open).toBe(false);
+        });
+    });
 });

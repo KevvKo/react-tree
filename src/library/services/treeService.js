@@ -112,6 +112,10 @@ const treeService = {
             node = node.parentNode;
             node.checked = !node.checked;
         }
+    },
+
+    toggleNode: ( node ) => {
+        node.open = !node.open;
     }
 };
 
