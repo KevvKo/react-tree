@@ -1,3 +1,7 @@
 .leaf{
     list-style: none;
 }
+
+.leaf input{
+    margin-left: 18px;
+}

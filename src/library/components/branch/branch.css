@@ -1,3 +1,7 @@
 .branch{
     list-style: none;
 }
+
+.branch ul{
+    padding-left: 30px;
+}

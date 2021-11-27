@@ -62,7 +62,7 @@ const Branch = (props) => {
                             {node.name}
                         </summary>
                         <ul>
-                        <Branch 
+                            <Branch 
                             nodes={node.childNodes} 
                             checkboxes={checkboxes}
                             onSelect={props.onSelect}

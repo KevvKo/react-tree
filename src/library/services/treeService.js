@@ -95,7 +95,6 @@ const treeService = {
     modifiyChildren: ( node, selectChildren ) => {
         
         node.childNodes.map((childNode) => {
-
             childNode.checked = !childNode.checked;
             if(childNode.hasChildren){
                 treeService.modifiyChildren(childNode);
