@@ -132,10 +132,12 @@ describe('treeService',() => {
         };
 
         it('should change the checked-property for parent nodes', () => {
+            node3.checked = true;
             service.modifyParent( node3 );
             expect(node2.checked).toBe(true);
             expect(node1.checked).toBe(true);
 
+            node3.checked = false;
             service.modifyParent( node3 );
             expect(node2.checked).toBe(true);
             expect(node1.checked).toBe(true);

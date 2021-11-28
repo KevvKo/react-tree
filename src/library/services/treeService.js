@@ -91,26 +91,25 @@ const treeService = {
     modifyChildren: ( node, selectChildren ) => {
         
         node.childNodes.map((childNode) => {
-            if(node.checked !== childNode.checked){
+            if(node.checked !== childNode.checked && selectChildren){
                 childNode.checked = !childNode.checked;
             }
 
             if(childNode.hasChildren && selectChildren){
-                    treeService.modifyChildren(childNode);
+                    treeService.modifyChildren(childNode, selectChildren);
             }
         });
     },
 
     /**
      * 
-     * @param {Object} node 
-     * @param {Boolean} selectParents 
+     * @param {Object} node  
      */
-    modifyParent: ( node, selectParents ) => {
+    modifyParent: ( node ) => {
         while( node.parentNode ){
             let parentNode = node.parentNode;
             
-            if(!parentNode.checked){
+            if( !parentNode.checked && node.checked){
                 parentNode.checked = !parentNode.checked;
             }
 

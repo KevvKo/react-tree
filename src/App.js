@@ -10,12 +10,9 @@ function App() {
       <div className="App">
         <Tree data={ data } />  
       </div>
-      {/* <div className="App">
+      <div className="App">
         <Tree data={ data } selectParents={true} selectChildren={false}/>  
       </div>
-      <div className="App">
-        <Tree data={ data } selectParents={false} selectChildren={true}/>  
-      </div> */}
     </>
   );
 }
