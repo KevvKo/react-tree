@@ -1,5 +1,5 @@
 {
-  "name": "react-tree",
+  "name": "rc-checkbox-tree",
   "description": "A react component to display data as a tree with or without checkboxes",
   "version": "1.0.0",
   "author": "KevvKo",
@@ -9,7 +9,6 @@
     "react-tree",
     "checkbox"
   ],
-  "private": true,
   "homepage": "https://github.com/KevvKo/react-tree",
   "license": "MIT",
   "dependencies": {
