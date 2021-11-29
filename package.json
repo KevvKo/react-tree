@@ -1,6 +1,14 @@
 {
   "name": "react-tree",
-  "version": "0.1.0",
+  "description": "A react component to display data as a tree with or without checkboxes",
+  "version": "1.0.0",
+  "author": "KevvKo",
+  "keywords": [
+    "react",
+    "tree",
+    "react-tree",
+    "checkbox"
+  ],
   "private": true,
   "homepage": "https://github.com/KevvKo/react-tree",
   "license": "MIT",
@@ -25,11 +33,6 @@
     "rollup-plugin-styles": "^3.14.1",
     "web-vitals": "^1.0.1"
   },
-  "keywords": [
-    "react-tree",
-    "react",
-    "tree"
-  ],
   "scripts": {
     "start": "react-scripts start",
     "build": "rollup -c",
