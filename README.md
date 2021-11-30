@@ -1,7 +1,15 @@
-## Getting Started
+# rc-checkbox-tree
 React-Tree is a react component to display data with or without checkboxes.
 
 ![React-Tree example](examples/react-tree.png)
+# Table of Contents
+1. [Getting Started](#getting-started)
+2. [API](#api)
+3. [Available Scripts](#available-scripts)
+
+## Getting Started
+To use the tree just run ```npm install rc-checkbox-tree```.
+Or with yarn ```yarn add rc-checkbox-tree```
 ## API
 
 **Node format:**
